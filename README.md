@@ -7,7 +7,7 @@ on https://github.com/dataprofessor/stock-app and
 customized by myself a Student of the University of
 Sanata Dharma.
 
-quick tutorial how to run locally:
+quick tutorial on how to run locally:
 1. Find the program directory adress
 2. Open your CLI and move to the dir of the folder
 3. type "streamlit run <programname>" and Enter
