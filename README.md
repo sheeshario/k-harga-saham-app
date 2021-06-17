@@ -1,21 +1,6 @@
 
 THE PROGRAM IS NOW LIVE AT https://aplikasihargasaham-app.herokuapp.com
 
-Indonesian--
-Harap membaca file .docx atau .pdf terlebih dahulu
-untuk menghindari terjadinya error dan mengetahui
-cara running program tersebut.
-
-Terima kasih
--Paulus C. Dito/205314159
-
-English--
-Please read the .pdf file first
-to avoid errors and find out how to run the program.
-
-Thank You
--Dito
-
 ---
 This program was originally created by Data Professor
 on https://github.com/dataprofessor/stock-app and
