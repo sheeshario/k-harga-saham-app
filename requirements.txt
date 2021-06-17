@@ -1,0 +1,4 @@
+streamlit
+yfinance
+googletrans==3.1.0a0
+cufflinks
