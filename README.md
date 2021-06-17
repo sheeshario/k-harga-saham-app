@@ -1,4 +1,6 @@
 
+THE PROGRAM IS NOW LIVE AT https://aplikasihargasaham-app.herokuapp.com
+
 Indonesian--
 Harap membaca file .docx atau .pdf terlebih dahulu
 untuk menghindari terjadinya error dan mengetahui
