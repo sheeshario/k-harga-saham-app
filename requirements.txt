@@ -1,4 +1,4 @@
-streamlit
-yfinance
+streamlit==0.82.0
+yfinance==0.1.59
 googletrans==3.1.0a0
-cufflinks
+cufflinks==0.17.3
