@@ -10,7 +10,7 @@ Sanata Dharma.
 quick tutorial on how to run locally:
 1. Find the program directory adress
 2. Open your CLI and move to the dir of the folder
-3. type "streamlit run <programname>" and Enter
+3. type "streamlit run 'programname'" and Enter
 4. Streamlit will load and open your browser
 5. Finish
 ---
