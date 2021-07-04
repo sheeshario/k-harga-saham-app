@@ -17,8 +17,8 @@ translator = Translator()
 # Judul awal aplikasi
 st.markdown('''
 # Aplikasi Harga Saham
-Ditujukan untuk memvisualisasikan saham **bank** di Indonesia. Namun anda juga bisa memasukkan Custom Ticker (cek **catatan**).
-Bank yang tersedia ada 5 yaitu: BCA, BNI, BRI, Mandiri, dan Cimb Niaga
+**App telah diubah karena terjadi error dengan pembacaan Ticker:'BBCA.JK', 'BBRI.JK', dll.**
+Sehingga aplikasi akan diubah kedalam full custom input dari user.
 
 **Credits**
 - App built by [Data Professor](https://www.youtube.com/channel/UCV8e2g4IWQqK71bbzGDEI4Q) and customized by Paulus Caesario Dito Putra Hartono
@@ -44,14 +44,8 @@ end_date = st.sidebar.date_input("End date", datetime.date(2021, 1, 1))    #vari
 # Sidebar streamlit
 st.sidebar.subheader('Input Ticker')    # Subheader
 
-# Penyimpanan data di variabel sidebar
-checkboxButton = st.sidebar.checkbox('Custom Ticker?')                      # Checkbox untuk custom ticker
 # Menu untuk custom input atau tidak
-if checkboxButton:
-    tickerSymbol = st.sidebar.text_input('Enter Ticker Symbol')             # Widget untuk input custom
-else:
-    ticker_list = ['BBCA.JK', 'BBNI.JK', 'BBRI.JK', 'BMRI.JK', 'BNGA.JK']   # Ticker List yang disediakan
-    tickerSymbol = st.sidebar.selectbox('Stock ticker', ticker_list)        # Widget untuk memilih ticker symbol dari array ticker_list
+tickerSymbol = st.sidebar.text_input('Enter Ticker Symbol', 'KO')             # Widget untuk input custom
 
 if tickerSymbol:    # cek variabel tickerSymbol mempunyai isi atau tidak
     # Assign yfinance dengan ticker yang sudah diinput
