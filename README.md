@@ -1,6 +1,8 @@
 
 THE PROGRAM IS NOW LIVE AT https://aplikasihargasaham-app.herokuapp.com
 
+THE PROGRAM HAS AN EXTENDED VERSION ON https://github.com/synraax/hargaSahamAppV2
+
 ---
 This program was originally created by Data Professor
 on https://github.com/dataprofessor/stock-app and
