@@ -7,7 +7,7 @@ on [this link](https://github.com/dataprofessor/stock-app) and
 customized by myself a Student of the University of
 Sanata Dharma.
 
-## Unfortunately there is an error beyond the control of this project
+## Unfortunately, there is an error beyond the control of this project (1/13/2023)
 
 ## Preview
 
