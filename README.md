@@ -8,6 +8,7 @@ customized by myself a Student of the University of
 Sanata Dharma.
 
 ## Unfortunately, there is an error beyond the control of this project (1/13/2023)
+reference: ["TypeError: string indices must be integers" when getting data of a stock from Yahoo Finance using Pandas Datareader"](https://stackoverflow.com/questions/74832296/typeerror-string-indices-must-be-integers-when-getting-data-of-a-stock-from-y)
 
 ## Preview
 
