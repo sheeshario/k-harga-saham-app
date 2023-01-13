@@ -1,17 +1,14 @@
-This is the extended version version of hargaSahamApp
-
-THE PROGRAM IS NOW LIVE AT https://aplikasihargasaham-app.herokuapp.com
+# Stock Market Viewer
 
 ---
+
 This program was originally created by Data Professor
-on https://github.com/dataprofessor/stock-app and
+on [this link](https://github.com/dataprofessor/stock-app) and
 customized by myself a Student of the University of
 Sanata Dharma.
 
-quick tutorial on how to run locally:
-1. Find the program directory adress
-2. Open your CLI and move to the dir of the folder
-3. type "streamlit run ..programname.." and Enter
-4. Streamlit will load and open your browser
-5. Finish
----
+## Unfortunately there is an error beyond the control of this project
+
+## Preview
+
+![image](https://user-images.githubusercontent.com/75000641/137870730-65bb5867-dba3-4b04-97cc-3e22af2b77f8.png)
