@@ -14,11 +14,14 @@ from googletrans import Translator
 # init the Google API translator - dari tutorial googletrans
 translator = Translator()
 
+# SETUP WIDE STREAMLIT 
+st.set_page_config(page_title='Stock Price App v2', layout="wide", page_icon='🤑')
+
 # Judul awal aplikasi
 st.markdown('''
-# Aplikasi Harga Saham
-**App telah diubah karena terjadi error dengan pembacaan Ticker:'BBCA.JK', 'BBRI.JK', dll.**
-Sehingga aplikasi akan diubah kedalam full custom input dari user.
+# Stock Price App
+
+**The Extended Version of [Aplikasi Harga Saham](https://github.com/synraax/hargaSahamApp)**
 
 **Credits**
 - App built by [Data Professor](https://www.youtube.com/channel/UCV8e2g4IWQqK71bbzGDEI4Q) and customized by Paulus Caesario Dito Putra Hartono
@@ -27,58 +30,103 @@ Sehingga aplikasi akan diubah kedalam full custom input dari user.
 - [freeCodeCamp.org](https://www.youtube.com/channel/UC8butISFwT-Wl7EV0hUK0BQ) - [Build 12 Data Science Apps with Python and Streamlit - Full Course](https://youtu.be/JwSS70SZdyM?t=569)
 - Dibuat dengan `Python` dengan library dari `streamlit`, `yfinance`, `datetime`, `googletrans`, dan `cufflinks`
 
-**Catatan**
-- Terkadang program membutuhkan waktu beberapa menit untuk menampilkan informasi keseluruhannya
-- Interval dari data adalah **harian**
-- Jika data terlalu sedikit untuk ditammpilkan di grafik terkadang grafik menjadi sangat kecil, coba double click pada bagian 'BOOL' di legend untuk memperbaiki 
-- Untuk custom ticker, harus menggunakan list ticker yang tersedia di [finance.yahoo.com](https://finance.yahoo.com/trending-tickers)
+**Notes**
+- Input the Ticker Symbol from this site: [finance.yahoo.com](https://finance.yahoo.com/trending-tickers)
 ''')
+
+
 st.write('---') # border
 
 # Sidebar streamlit
-st.sidebar.subheader('Input Tanggal')   # Subheader
-# Penyimpanan data di variabel sidebar
-start_date = st.sidebar.date_input("Start date", datetime.date(2020, 1, 1)) #variabel untuk batas awal historical data
-end_date = st.sidebar.date_input("End date", datetime.date(2021, 1, 1))    #variabel untuk batas akhir historical data
+st.sidebar.subheader('Input Tanggal')   
 
-# Sidebar streamlit
-st.sidebar.subheader('Input Ticker')    # Subheader
+#Input date
+start_date = st.sidebar.date_input("Start date", datetime.date(2020, 1, 1)) #
+end_date = st.sidebar.date_input("End date", datetime.date(2021, 1, 1))    
 
-# Menu untuk custom input atau tidak
-tickerSymbol = st.sidebar.text_input('Enter Ticker Symbol', 'KO')             # Widget untuk input custom
+st.sidebar.subheader('Input Ticker')   
 
-if tickerSymbol:    # cek variabel tickerSymbol mempunyai isi atau tidak
-    # Assign yfinance dengan ticker yang sudah diinput
-    tickerData = yf.Ticker(tickerSymbol)                                        # mendapatkan data dari ticker yang disediakan
-    tickerDf = tickerData.history(period='1d', start=start_date, end=end_date)  # mendapatkan data historical price dari ticker yang dipilih
+# Sidebar input
+tickerSymbol1 = st.sidebar.text_input('Enter Ticker Symbol #1', 'KO')
 
-    ### Perolehan informasi dari data dalam Ticker 
-    #   (data diambil dari variabel 'tickerData' kemudian di-assign ke variabel selanjutnya)
-    ###
-    string_logo = '<img src=%s>' % tickerData.info['logo_url']      # Data logo, diambil dari '<ticker>.info' kemudian mengambil urlnya dan disimpan di variabel
-    st.markdown(string_logo, unsafe_allow_html=True)                            # Menampilkan gambar
+tickerSymbol2 = st.sidebar.text_input('Enter Ticker Symbol #2', 'TSLA')
 
-    string_name = tickerData.info['longName']                           # Pengambilan nama perusahaan dari '<ticker>.info' menggunakan keyword 'longName'
-    st.header('**%s**' % string_name)                                           # Menampilkan nama perusahaan dengan format bold dan header
+if tickerSymbol1 and tickerSymbol2:    
 
-    string_summary = tickerData.info['longBusinessSummary']                     # Pengambilan data untuk bio singkat tentang perusahaan dan disimpan di variabel
-    # translate info tentang perusahaan (en) ke dalam bahasa Indonesia
-    translation = translator.translate(string_summary, dest='id')               # Penggunaan fungsi dari lib googletrans untuk translate
-    string_info = translation.text + '\n\n*-translated by googletrans*'         # Penambahan keterangan dari data yang sudah ditranslate
-    st.info(string_info)                                                        # Menampilkan data bio
+    col1, col2 = st.beta_columns(2)
 
+    # COL1
+    tickerData1 = yf.Ticker(tickerSymbol1)                                        
+    tickerDf1 = tickerData1.history(period='1d', start=start_date, end=end_date) 
+    # COL2
+    tickerData2 = yf.Ticker(tickerSymbol2)                                        
+    tickerDf2 = tickerData2.history(period='1d', start=start_date, end=end_date)
+
+    ### Divide DATA SUMMARY ###
+    ### SHOW DATA ###
+    # COL1
+    string_logo = '<img src=%s>' % tickerData1.info['logo_url']      
+    col1.markdown(string_logo, unsafe_allow_html=True)                           
+
+    string_name = tickerData1.info['longName']                          
+    col1.header('**%s**' % string_name)                                          
+
+    string_summary = tickerData1.info['longBusinessSummary']                  
+    translation = translator.translate(string_summary, dest='id')               
+    string_info = translation.text + '\n\n*-translated by googletrans*'       
+    col1.info(string_info)  
+
+    # COL2
+    ### SHOW DATA ###
+    string_logo = '<img src=%s>' % tickerData2.info['logo_url']      
+    col2.markdown(string_logo, unsafe_allow_html=True)                           
+
+    string_name = tickerData2.info['longName']                          
+    col2.header('**%s**' % string_name)                                          
+
+    string_summary = tickerData2.info['longBusinessSummary']                  
+    translation = translator.translate(string_summary, dest='id')               
+    string_info = translation.text + '\n\n*-translated by googletrans*'       
+    col2.info(string_info)
+
+    ### END DATA SUMMARY ###
+
+    ### Divide DATA TABEL ###
+    col3, col4 = st.beta_columns(2)
+
+    # COL3
     # Ticker historical data
-    st.header('**Ticker Historical Data**')                                     # Menampilkan header
-    st.write(tickerDf)                                                          # Menampilkan tabel
+    col3.header('**Ticker Historical Data**')                                   
+    col3.write(tickerDf1)
 
+    # COL4
+    # Ticker historical data
+    col4.header('**Ticker Historical Data**')                                   
+    col4.write(tickerDf2)
+
+    ### END DATA TABEL ###
+
+    ### Divide DATA GRAFIK ###
+    col5, col6 = st.beta_columns(2)
+
+    # COL5
     # Bollinger bands atau grafik
-    st.header('**Grafik Saham**')                                               # Menampilkan header
-    qf=cf.QuantFig(tickerDf,title='First Quant Figure',legend='top',name='GS')  # Isi grafik
-    qf.add_bollinger_bands()                                                    # Menambahkan grafik
-    fig = qf.iplot(asFigure=True)                                               # Memplot grafik
-    st.plotly_chart(fig)                                                        # Menampilkan grafik di web
+    col5.header('**Grafik Saham**')                                              
+    qf=cf.QuantFig(tickerDf1,title='First Quant Figure',legend='top',name='GS')  
+    qf.add_bollinger_bands()                                                   
+    fig = qf.iplot(asFigure=True)                                             
+    col5.plotly_chart(fig)                                                    
+
+    # COL6                                                   
+    # Bollinger bands atau grafik
+    col6.header('**Grafik Saham**')                                              
+    qf=cf.QuantFig(tickerDf2,title='First Quant Figure',legend='top',name='GS')  
+    qf.add_bollinger_bands()                                                   
+    fig = qf.iplot(asFigure=True)                                             
+    col6.plotly_chart(fig)
+                                                
 else:
-    # Menampilkan header jika variabel tickerSymbol kosong
+   
     st.markdown("<h2 style='text-align: center; color: white;'>input ticker symbol first</h2>", unsafe_allow_html=True)   
 
-st.write('---') # border
+st.write('---') 
