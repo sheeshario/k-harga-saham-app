@@ -13,3 +13,6 @@ reference: ["TypeError: string indices must be integers" when getting data of a 
 ## Preview
 
 ![image](https://user-images.githubusercontent.com/75000641/137870730-65bb5867-dba3-4b04-97cc-3e22af2b77f8.png)
+
+v1.1.0
+![image](https://user-images.githubusercontent.com/75000641/212552337-a6284198-8cce-40fe-8fb4-cdb0ab8cb5a4.png)
